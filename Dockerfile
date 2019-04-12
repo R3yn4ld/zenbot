@@ -18,5 +18,5 @@ RUN ln -s /app/zenbot.sh /usr/local/bin/zenbot
 
 ENV NODE_ENV production
 
-ENTRYPOINT ["screen"]
-CMD [ "/app/zenbot.sh", "trade", "--paper" ]
+ENTRYPOINT ["screen /app/zenbot.sh"]
+CMD [ "trade", "--paper" ]
