@@ -8,6 +8,7 @@ FROM node:8-alpine
 
 ADD . /app
 WORKDIR /app
+RUN apk add screen
 
 COPY --from=builder /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
 COPY --from=builder /app/node_modules /app/node_modules/
@@ -17,5 +18,5 @@ RUN ln -s /app/zenbot.sh /usr/local/bin/zenbot
 
 ENV NODE_ENV production
 
-ENTRYPOINT ["/app/zenbot.sh"]
-CMD [ "trade", "--paper" ]
+ENTRYPOINT ["screen"]
+CMD [ "/app/zenbot.sh", "trade", "--paper" ]
